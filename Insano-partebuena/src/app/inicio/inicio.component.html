@@ -1,0 +1,12 @@
+<main>
+    <div class="contenidomain">
+        <div class="fondoazul">
+            <h1>INSANO COMPUTER</h1>
+        </div>
+        <div class="productos">
+            @for(item of mockData; track item) {
+            <app-producto-container [product]="item"></app-producto-container>
+            }
+        </div>
+    </div>
+</main>

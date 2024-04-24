@@ -1,0 +1,14 @@
+.productoContainer {
+    display: inline-block;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    margin: 5px;
+    width: 270px;
+    border-radius: 10px;
+    margin-right: 120px;
+}
+
+.productoContainer img {
+    width: 50%;
+}

@@ -1,0 +1,49 @@
+<header>
+    <img src="../assets/logo-proyecto.png">
+
+    <div class="todoheader">
+        <div class="buscador">
+            <input id="buscar" type="text" placeholder="Buscar...">
+            <button type="submit">Buscar</button>
+        </div>
+        <div class="botonesnavegacion">
+            <button class="botonav" routerLink="">Inicio</button>
+            <button class="botonav" routerLink="nosotros">Sobre Nosotros</button>
+            <button class="botonav"><a href="#">Acerca de</a></button>
+            <button class="botonav"><a href="#">Contacto</a></button>
+        </div>
+        <div class="carrito">
+            <img src="ruta_de_tu_logo.png">
+        </div>
+    </div>
+</header>
+
+<router-outlet></router-outlet>
+
+<footer>
+    <div class="cotenidofooter">
+        <div class="section-izquierda">
+            <h2 class="enlaces">Enlaces de interés</h2>
+            <ul class="enlaces">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Contáctanos</a></li>
+                <li>[<a href="#">Política de privacidad</a>]</li>
+            </ul>
+            <h3 class="enlaces">Contactanos</h3>
+            <ul class="enlaces">
+                <li>insanocomputerinsano.com</li>
+                <li>+34 689 921 512</li>
+                <a routerLink="register">Registro</a>
+            </ul>
+        </div>
+        <div class="section-derecha">
+            <h2>Visita nuestras redes sociales</h2>
+            <div class="social-icons">
+                <a href="#"><img src="facebook-icon.png"></a>
+                <a href="#"><img src="instagram-icon.png"></a>
+                <a href="#"><img src="twitter-icon.png"></a>
+            </div>
+        </div>
+    </div>
+</footer>

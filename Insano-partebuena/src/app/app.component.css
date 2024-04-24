@@ -1,0 +1,204 @@
+.caja-empleado, .caja-empleadodos{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.imagen-empleado {
+    width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    height: 100px;
+    margin-right: 5px;
+}
+
+.descripcion-empleado {
+    flex: 1;
+}
+
+.descripcion-empleado h3 {
+    margin-top: 0;
+}
+
+.descripcion-empleado p {
+    margin-bottom: 0;
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+}
+
+img {
+    width: 10%;
+}
+
+.todoheader {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.botonesnavegacion {
+    width: 50%;
+}
+
+button.botonav {
+    margin-left: 5%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.contenidomain {
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    background-color: #769DFF;
+    overflow-y: auto;
+    /* Agrega un scrollbar vertical cuando el contenido sea más grande que el contenedor */
+    max-height: 600px;
+    /* Define la altura máxima del contenedor antes de que aparezca el scrollbar */
+}
+
+.fondoazul {
+    background-color: #769DFF;
+    text-align: center;
+    padding: 10px;
+    margin-top: 50px;
+    height: 700px;
+    width: 1329px;
+}
+
+.fondoazul h1 {
+    color: black;
+    margin: 0;
+    text-align: start;
+}
+.logo {
+    margin-bottom: 20px;
+    margin-right: 35px;
+}
+
+.logo img {
+    width: 100px;
+    /* Ajusta el tamaño del logo según sea necesario */
+}
+
+.login-section {
+    text-align: center;
+}
+
+.login-section h2 {
+    margin-bottom: 20px;
+}
+
+.login-section form {
+    width: 80%;
+}
+
+.titulologin {
+    margin-right: 42px;
+}
+
+.login-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-section input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.login-section p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-section a {
+    color: #769DFF;
+}
+
+button {
+    background-color: #769DFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5a78cc;
+}
+
+.cotenidofooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-izquierda,
+.section-derecha {
+    flex: 1;
+    color: white;
+    /* Color de letra blanco */
+    background-color: black;
+}
+
+.footer {
+    background-color: black;
+    /* Fondo negro */
+}
+
+.enlaces {
+    margin-left: 20px;
+}
+
+.section-izquierda h2,
+.section-derecha h2 {
+    margin-bottom: 10px;
+}
+
+.section-izquierda ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.section-izquierda ul li {
+    margin-bottom: 5px;
+}
+
+.section-izquierda ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.section-izquierda h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.section-derecha .social-icons {
+    display: flex;
+}
+
+.section-derecha .social-icons a {
+    margin-right: 10px;
+}

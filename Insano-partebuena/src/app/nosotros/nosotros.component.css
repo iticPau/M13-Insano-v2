@@ -1,0 +1,13 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+app-info-persona {
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

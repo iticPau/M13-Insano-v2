@@ -1,0 +1,18 @@
+<!-- product-detail.component.html -->
+
+@if(product) {
+<div>
+    <h2>Detalles del Producto</h2>
+    <ul>
+        <li><strong>Nombre:</strong> {{ product.name }}</li>
+        <li><strong>Descripción:</strong> {{ product.description }}</li>
+        <li><strong>Precio:</strong> {{ product.price }}</li>
+        <!-- Agrega más propiedades del producto si es necesario -->
+    </ul>
+</div>
+}
+@else {
+<div>
+    <p>No se han recibido datos del producto.</p>
+</div>
+}
