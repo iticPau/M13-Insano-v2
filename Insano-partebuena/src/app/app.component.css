@@ -5,7 +5,7 @@
 }
 
 .imagen-empleado {
-    width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+    width: 100px; 
     height: 100px;
     margin-right: 5px;
 }
@@ -67,9 +67,7 @@ body {
     height: 700px;
     background-color: #769DFF;
     overflow-y: auto;
-    /* Agrega un scrollbar vertical cuando el contenido sea más grande que el contenedor */
     max-height: 600px;
-    /* Define la altura máxima del contenedor antes de que aparezca el scrollbar */
 }
 
 .fondoazul {
@@ -93,7 +91,6 @@ body {
 
 .logo img {
     width: 100px;
-    /* Ajusta el tamaño del logo según sea necesario */
 }
 
 .login-section {
@@ -163,7 +160,6 @@ button:hover {
 
 .footer {
     background-color: black;
-    /* Fondo negro */
 }
 
 .enlaces {

@@ -1,0 +1,39 @@
+<h2>Cistell de compra</h2>
+<section>
+
+    @if(products.length == 0) {
+    <p>No hi ha productes al cistell</p>
+    }
+    @else {
+    <table>
+        <tr>
+            <td></td>
+            <td>producte</td>
+            <td>preu</td>
+            <td>cuantitat</td>
+            <td>total</td>
+        </tr>
+        @for(item of products; track item.id) {
+        <tr>
+            <td><img src="{{item.imagen}}" alt="" srcset=""></td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.precio}}</td>
+            <td>
+                <input type="number" min="0" [(ngModel)]="products[$index].cantidad"
+                    (input)="updateQuantity($index, item.cantidad)">
+            </td>
+            <!-- <td>{{Number(item.precio) * item.cantidad}}</td> -->
+        </tr>
+        }
+    </table>
+    <article>
+        <p>{{ getTotalQuantity() }} articulos --> {{ getTotalPrice() }}€</p>
+        <p>Descuento(s) --> - 7,99€</p>
+        <p>Transporte --> Gratis</p>
+        <p>TOTAL --> {{getTotalPrice() - 7.99}}€</p>
+        <div>
+            <button (click)="pay()">Fer pagament</button>
+        </div>
+    </article>
+    }
+</section>

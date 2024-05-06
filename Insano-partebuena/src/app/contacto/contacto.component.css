@@ -1,0 +1,45 @@
+section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.title {
+    font-size: 4rem;
+}
+
+.form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.form p {
+    width: 30%;
+}
+
+.form input {
+    width: 70%;
+}
+
+.form button {
+    width: 55%;
+    margin: 0 auto;
+    border-radius: 15px;
+    padding: 1%;
+    background-color: white;
+    margin-bottom: 5%;
+}
+
+.info {
+    width: 40%;
+    margin-top: 5%;
+}
+
+.info h2 {
+    font-size: 2rem;
+}

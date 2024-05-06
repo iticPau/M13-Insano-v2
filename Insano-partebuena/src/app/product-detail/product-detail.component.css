@@ -1,0 +1,66 @@
+.title {
+    font-size: 4rem;
+    margin-left: 5%;
+}
+
+.detalles {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    flex-direction: column;
+    background-color: white;
+    border: 4px black solid;
+    border-radius: 10px;
+    padding: 2%;
+}
+
+.detalles img {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #769DFF;
+    width: 30%;
+    padding: 1%;
+    border-radius: 10px;
+    border: 2px black solid;
+
+}
+
+.counter button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.counter button:disabled {
+    color: gray;
+}
+
+.counter span {
+    font-size: 20px;
+    width: 30px;
+    text-align: center;
+}
+
+.añadirCarrito {
+    background-color: #769DFF;
+    border-radius: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    cursor: pointer;
+}

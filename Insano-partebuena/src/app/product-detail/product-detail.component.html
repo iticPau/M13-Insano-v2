@@ -1,14 +1,21 @@
 <!-- product-detail.component.html -->
 
 @if(product) {
-<div>
-    <h2>Detalles del Producto</h2>
-    <ul>
-        <li><strong>Nombre:</strong> {{ product.name }}</li>
-        <li><strong>Descripción:</strong> {{ product.description }}</li>
-        <li><strong>Precio:</strong> {{ product.price }}</li>
-        <!-- Agrega más propiedades del producto si es necesario -->
-    </ul>
+<h2 class="title">{{product.nombre}}</h2>
+<div class="detalles">
+    <img [src]="product.imagen" [alt]="product.nombre" />
+    <h2>{{product.nombre}}</h2>
+    <p>{{product.descripcion}}</p>
+    <p>{{product.precio}}</p>
+    <div class="buttons">
+        <div class="counter">
+            <button (click)="decrement()" [disabled]="count === 0">-</button>
+            <span>{{ count }}</span>
+            <button (click)="increment()">+</button>
+        </div>
+
+        <button class="añadirCarrito" (click)="anadirAlCarrito()">Añadir al carrito</button>
+    </div>
 </div>
 }
 @else {

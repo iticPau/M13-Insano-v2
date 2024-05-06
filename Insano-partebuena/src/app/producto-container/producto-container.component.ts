@@ -1,5 +1,5 @@
 import { Component, Input, input } from '@angular/core';
-import { Product } from '../model/Product.model';
+import { Producto } from '../model/Product.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProductoContainerComponent {
 
-  // Parametro de entrada de name
-  @Input() product: Product | undefined;
+  @Input() product: Producto | undefined;
 
   constructor(private router: Router) { }
 

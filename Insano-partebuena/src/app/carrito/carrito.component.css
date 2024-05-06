@@ -1,0 +1,14 @@
+section {
+    display: flex;
+}
+
+table {
+    width: 60%;
+}
+
+table td {
+    width: 20%;
+}
+table td img {
+    width: 100%;
+}
