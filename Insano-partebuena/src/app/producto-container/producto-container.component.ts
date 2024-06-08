@@ -21,5 +21,10 @@ export class ProductoContainerComponent {
       this.router.navigate(['product-detail'], { queryParams: { product: JSON.stringify(this.product) } });
     }
   }
-  
+
+  //Obtenemos las caracterusticas como array
+  get productFeatures(): string[] {
+    return this.product?.caracteristicas.split(';').map(feature => feature.trim()) || [];
+  }
+
 }

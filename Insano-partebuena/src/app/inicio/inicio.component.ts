@@ -14,12 +14,14 @@ import { Subject, takeUntil } from 'rxjs';
 export class InicioComponent implements OnInit {
   private destroy$ = new Subject<void>();
   productos: Producto[] = [];
+  nombreEmpresa: string = '';
 
   constructor(private productosService: InsanoService) {}
 
   ngOnInit() {
     console.log('InicioComponent inicializado');
     this.cargarProductos();
+    this.cargarDatosEmpresa();
   }
 
   cargarProductos() {
@@ -28,9 +30,24 @@ export class InicioComponent implements OnInit {
     ).subscribe(
       data => {
         this.productos = data;
+        console.log('Productos obtenidos:', this.productos);
       },
       error => {
         console.log('Hubo un error al obtener los productos:', error);
+      }
+    );
+  }
+
+  cargarDatosEmpresa() {
+    this.productosService.obtenerDatosEmpresa().pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(
+      data => {
+        console.log('Datos de la empresa obtenidos:', data);
+        this.nombreEmpresa = data.nombre;
+      },
+      error => {
+        console.log('Hubo un error al obtener los datos de la empresa:', error);
       }
     );
   }

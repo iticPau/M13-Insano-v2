@@ -60,30 +60,42 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px;
 }
 
 .contenidomain {
     display: flex;
     width: 2000px;
     max-width: 2000px;
-    height: 400px;
 }
 
 .mitadfondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
-    /*background-image: url('../assets/fondo.png');*/
-    background-size: 700px 400px;
+    background-size: 700px 800px;
     background-position: center;
 }
 
+
+.mitadfondo img {
+    width: 500px;
+    height: 500px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
 .mitadblanco {
-    flex: 1;
+    flex: 1.3;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 5%;
 }
 
 .logo {
@@ -92,11 +104,12 @@ main {
 }
 
 .logo img {
-    width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+    width: 100px; 
 }
 
 .login-section {
     text-align: center;
+    width: 50%;
 }
 
 .login-section h2 {
@@ -109,15 +122,17 @@ main {
 
 .login-section form div {
     display: flex;
+    margin-bottom: 5%;
 }
 
-.titulologin{
+.tituloregister{
     margin-right: 42px;
 }
 
 .login-section label {
     display: block;
     margin-bottom: 5px;
+    margin-right: 5%;
 }
 
 .login-section input {
@@ -159,12 +174,12 @@ button:hover {
 .section-izquierda,
 .section-derecha {
     flex: 1;
-    color: white; /* Color de letra blanco */
+    color: white; 
     background-color: black;
 }
 
 .footer {
-    background-color: black; /* Fondo negro */
+    background-color: black; 
 }
 .enlaces{
     margin-left: 20px;
@@ -194,10 +209,7 @@ button:hover {
     margin-top: 20px;
     margin-bottom: 10px;
 }
-body{
-    margin: 0;
-    padding: 0;
-}
+
 .section-derecha .social-icons {
     display: flex;
 }
@@ -205,3 +217,5 @@ body{
 .section-derecha .social-icons a {
     margin-right: 10px;
 }
+
+

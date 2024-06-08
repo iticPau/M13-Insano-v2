@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, shareReplay } from 'rxjs';
+import { Observable, shareReplay, tap } from 'rxjs';
 import { Producto } from '../model/Product.model';
+import { Usuario } from '../model/Usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,18 @@ export class InsanoService {
 
   private baseUrl = 'http://localhost:8080/insano';
 
-  public loggedInUser: any; // Aquí almacenarías la información del usuario
+  public loggedInUser: any; //Alacenamos la informacion del usuario
 
   private productosCache$: Observable<Producto[]> | null = null;
-  
+
+  private datosEmpresaCache$: Observable<any> | null = null;
+  public datosEmpresa: any = null; //Almacenamos los datos de la empresa
+
   private carritoProductos: Producto[] = [];
 
   constructor(private http: HttpClient) { }
 
-  // Métodos
+  //Metodos
 
   obtenerTodosLosProductos(): Observable<Producto[]> {
     if (!this.productosCache$) {
@@ -29,61 +33,95 @@ export class InsanoService {
     return this.productosCache$;
   }
 
-  // Método para añadir producto al carrito
+  //Metodo para añadir producto al carrito
   añadirAlCarrito(producto: Producto, cantidad: number): void {
-    // Verificar si el producto ya está en el carrito
+    //Verificar si el producto ya esta en el carrito
     const productoExistente = this.carritoProductos.find(p => p.id === producto.id);
     if (productoExistente) {
-      // Si el producto ya está en el carrito, solo actualiza la cantidad
       productoExistente.cantidad += cantidad;
     } else {
-      // Si no está en el carrito, establece la cantidad y añádelo
       this.carritoProductos.push({ ...producto, cantidad: cantidad });
     }
   }
 
-  // Método para obtener el carrito de compras
+  //Metodo para obtener el carrito de compras
   obtenerCarrito(): Producto[] {
     return this.carritoProductos;
   }
 
-  // Método para vaciar el carrito
+  //Metodo para vaciar el carrito
   vaciarCarrito(): void {
     this.carritoProductos = [];
   }
 
-  // Método para actualizar el carrito
+  //Metodo para actualizar el carrito
   actualizarCarrito(productos: Producto[]): void {
     this.carritoProductos = productos;
   }
 
-  // --------------------------------------------
-
-
-  // Método para iniciar sesión
-  login(username: string, password: string): boolean {
-    // Aquí realizarías la lógica de autenticación
-    // Si la autenticación es exitosa, guarda la información del usuario y devuelve true
-    if (username === 'usuario' && password === 'contraseña') {
-      this.loggedInUser = { username: username };
-      return true;
-    }
-    return false;
+  registrarUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.baseUrl}/user/registro`, usuario);
   }
 
-  // Método para cerrar sesión
+  login(usuario: string, password: string): Observable<Usuario> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const params = { usuario, password };
+    console.log(params);
+    return this.http.get<Usuario>(`${this.baseUrl}/user/login`, { params, headers }).pipe(
+      tap((usuario: Usuario) => {
+        this.loggedInUser = { username: usuario.usuario };
+      })
+    );
+  }
+
+  registrarCompra(nombreUsuario: string, idProducto: number, fecha: string, cantidad: number, precioTotal: number): Observable<any> {
+    const body = { nombreUsuario: nombreUsuario, idProducto: idProducto, fecha: fecha, cantidad: cantidad, precioTotal: precioTotal };
+    console.log('Registrando compra:', body);
+    return this.http.post<any>(`${this.baseUrl}/compra/registrar`, body);
+  }
+
+  //Metodo para obtener productos por categoria
+  obtenerProductosPorCategoria(categoria: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.baseUrl}/productos/categoria`, {
+      params: { categoria: categoria }
+    });
+  }
+  obtenerDatosEmpresa(): Observable<any> {
+    if (!this.datosEmpresaCache$) {
+      this.datosEmpresaCache$ = this.http.get<any>(`${this.baseUrl}/empresa`).pipe(
+        tap(datos => {
+          this.datosEmpresa = datos;
+        }),
+        shareReplay(1)
+      );
+    }
+    return this.datosEmpresaCache$;
+  }
+
+  obtenerDatosEmpresaSincronico() {
+    return this.datosEmpresa; 
+  }
+
+  //Metodo para obtener productos por nombre
+obtenerProductosPorNombre(nombre: string): Observable<Producto[]> {
+  return this.http.get<Producto[]>(`${this.baseUrl}/productos/nombre`, {
+    params: { nombre: nombre }
+  });
+}
+
+  //Metodo para cerrar sesion
   logout(): void {
     console.log('Cerrando sesión');
     this.loggedInUser = null;
     console.log(this.loggedInUser);
   }
 
-  // Método para verificar si el usuario está autenticado
+  //Metodo para verificar si el usuario esta autenticado
   isLoggedIn(): boolean {
     return this.loggedInUser != null;
   }
 
-  // Método para obtener la información del usuario autenticado
+  //Metodo para obtener la info del usuario autenticado
   getUserInfo(): any {
     return this.loggedInUser;
   }

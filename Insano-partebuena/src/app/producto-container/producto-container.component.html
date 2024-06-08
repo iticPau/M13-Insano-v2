@@ -1,11 +1,12 @@
 <div class="productoContainer">
     <h3>{{ product?.nombre }}</h3>
     <img src="{{product?.imagen}}" alt="" srcset="">
+    <p>{{ product?.descripcion }}</p>
     <div class="descripcion">
         <ul>
-            <li>{{ product?.descripcion }}</li>
-            <li>Descripción 2</li>
-            <li>Descripción 3</li>
+            @for(item of productFeatures; track item) {
+            <li>{{item}}</li>
+            }
         </ul>
         <button class="afegir" (click)="redirectToProductDetail()">AFEGIR AL CISTELL</button>
     </div>

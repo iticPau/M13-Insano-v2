@@ -1,9 +1,11 @@
 <main>
     <div class="contenidomain">
-        <div class="mitadfondo"></div>
+        <div class="mitadfondo">
+            <img src="../../assets/background-login-register.jpg">
+        </div>
         <div class="mitadblanco">
             <div class="logo">
-                <img src="ruta_de_tu_logo.png">
+                <img src="../../assets/logo-proyecto.png">
             </div>
             <div class="login-section">
                 <h2 class="titulologin">LOGIN</h2>
@@ -19,7 +21,7 @@
                     @if (loginError) {
                         <p class="error-message">{{ loginError }}</p>
                     }
-                    <p>No tienes una cuenta registrada? <a href="#">Regístrate aquí</a></p>
+                    <p>No tienes una cuenta registrada? <a routerLink="/register">Regístrate aquí</a></p>
                     <button type="submit">LOGIN</button>
                 </form>
             </div>

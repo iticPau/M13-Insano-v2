@@ -1,7 +1,9 @@
 package com.insano.backend.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.insano.backend.model.Empresa;
 import com.insano.backend.model.Producto;
 import com.insano.backend.model.Usuario;
+import com.insano.backend.model.UsuarioProducto;
 import com.insano.backend.repository.EmpresaRepository;
 import com.insano.backend.repository.ProductoRepository;
+import com.insano.backend.repository.UsuarioProductoRepository;
 import com.insano.backend.repository.UsuarioRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -33,6 +37,9 @@ public class InsanoController {
 
     @Autowired
     private ProductoRepository productoRepository;
+    
+    @Autowired
+    private UsuarioProductoRepository usuarioProductoRepository;
 	
     @GetMapping("/getAllUsuarios")
     public List<Usuario> getAllUsuarios() {
@@ -44,13 +51,20 @@ public class InsanoController {
             @RequestParam String usuario,
             @RequestParam String password) {
 
-        return usuarioRepository.findByUsuarioAndPassword(usuario, password)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Optional<Usuario> userOptional = usuarioRepository.findByUsuario(usuario);
+        if (userOptional.isPresent()) {
+            Usuario user = userOptional.get();
+            //Verifica si la contraseña en texto plano coincide con el hash almacenado
+            if (BCrypt.checkpw(password, user.getPassword())) {
+                return ResponseEntity.ok(user);
+            }
+        }
+        return ResponseEntity.notFound().build();
     }
     
     @PostMapping("/user/registro")
     public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
+    	usuario.setPassword(BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt()));
         Usuario nuevoUsuario = usuarioRepository.save(usuario);
         return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
     }
@@ -74,5 +88,25 @@ public class InsanoController {
         List<Producto> productos = productoRepository.findAll();
         return ResponseEntity.ok(productos);
     }
+    
+    @GetMapping("/productos/nombre")
+    public ResponseEntity<List<Producto>> getProductosPorNombre(@RequestParam String nombre) {
+        List<Producto> productos = productoRepository.findByNombreContainingIgnoreCase(nombre);
+        return ResponseEntity.ok(productos);
+    }
+    
+    @GetMapping("/productos/categoria")
+    public ResponseEntity<List<Producto>> getProductosByCategoria(@RequestParam String categoria) {
+        List<Producto> productos = productoRepository.findByCategoria(categoria);
+        return ResponseEntity.ok(productos);
+    }
 	
+    @PostMapping("/compra/registrar")
+    public ResponseEntity<UsuarioProducto> registrarCompra(@RequestBody UsuarioProducto compraRequest) {
+    	
+    	UsuarioProducto usuarioProducto = usuarioProductoRepository.save(compraRequest);
+        System.out.println("Registrando compra: " + compraRequest);
+        return new ResponseEntity<>(usuarioProducto, HttpStatus.CREATED);
+    }
+    
 }

@@ -1,0 +1,27 @@
+<section class="buscador">
+    <h2>Categorias</h2>
+    <hr>
+    <section class="categoria">
+        @for(item of categorias; track item.id) {
+        <article (click)="search(item.nombre)">
+            <img src="{{item.urlImg}}">
+            <strong>{{item.nombre}}</strong>
+        </article>
+        }
+    </section>
+    <h2>Productos</h2>
+    <input type="text" [(ngModel)]="nombreProducto" placeholder="Buscar producto por nombre">
+    <button (click)="buscarPorNombre()">Buscar</button>
+    <hr>
+    @if(productos.length == 0) {
+    <p>No se han encontrado productos.</p>
+    <p>Busca por una categoría.</p>
+    }
+    @else {
+    <section class="productos-buscados">
+        @for(item of productos; track item.id) {
+            <app-producto-container [product]="item"></app-producto-container>
+        }
+    </section>
+    }
+</section>

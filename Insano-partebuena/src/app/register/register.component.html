@@ -1,53 +1,42 @@
 <main>
     <div class="contenidomain">
         <div class="mitadfondo">
-
+            <img src="../../assets/background-login-register.jpg">
         </div>
         <div class="mitadblanco">
             <div class="logo">
-                <img src="ruta_de_tu_logo.png">
+                <img src="../../assets/logo-proyecto.png">
             </div>
             <div class="login-section">
                 <h2 class="tituloregister">REGISTER</h2>
-                <form>
+                <form (submit)="registrarUsuario()">
                     <div>
-
                         <label for="nom">Nom:</label>
-                        <input type="text" id="nom" name="nom" required>
+                        <input type="text" id="nom" name="nom" [(ngModel)]="nuevoUsuario.nombre" required>
                     </div>
                     <div>
-
                         <label for="cognom">Cognom:</label>
-                        <input type="text" id="cognom" name="cognom" required>
+                        <input type="text" id="cognom" name="cognom" [(ngModel)]="nuevoUsuario.apellidos" required>
                     </div>
                     <div>
-
                         <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
+                        <input type="text" id="username" name="username" [(ngModel)]="nuevoUsuario.usuario" required>
                     </div>
-
                     <div>
-
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" [(ngModel)]="nuevoUsuario.email" required>
                     </div>
-
                     <div>
-
                         <label for="direccion">Dirección:</label>
-                        <input type="text" id="direccion" name="direccion" required>
+                        <input type="text" id="direccion" name="direccion" [(ngModel)]="nuevoUsuario.direccion" required>
                     </div>
-
                     <div>
-
                         <label for="telefon">Telefon:</label>
-                        <input type="tel" id="telefon" name="telefon" required>
+                        <input type="tel" id="telefon" name="telefon" [(ngModel)]="nuevoUsuario.telefono" required>
                     </div>
-
                     <div>
-
                         <label for="contraseña">Contraseña:</label>
-                        <input type="password" id="contraseña" name="contraseña" required>
+                        <input type="password" id="contraseña" name="contraseña" [(ngModel)]="nuevoUsuario.password" required>
                     </div>
                     <button type="submit">REGISTRA-SE</button>
                 </form>

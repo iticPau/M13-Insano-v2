@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
 
 @Entity
 public class Producto {
@@ -17,10 +16,10 @@ public class Producto {
     @Column(length = 50)
     private String nombre;
 
-    @Column(length = 50)
+    @Column(length = 500)
     private String descripcion;
 
-    @Column(length = 50)
+    @Column(length = 500)
     private String caracteristicas;
 
     @Column(length = 50)
@@ -28,105 +27,132 @@ public class Producto {
 
     @Column(length = 50)
     private String categoria;
-    
+
     @Column(length = 200)
     private String imagen;
-    
+
     @Column(length = 11)
-    private int cantidad;
+    private float cantidad;
 
-	public Producto(Integer id, String nombre, String descripcion, String caracteristicas, String precio,
-			String categoria, String imagen, int cantidad) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.caracteristicas = caracteristicas;
-		this.precio = precio;
-		this.categoria = categoria;
-		this.imagen = imagen;
-		this.cantidad = cantidad;
-	}
-	
-	
+    public Producto() {
+    }
 
-	public Producto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public Producto(Integer id, String nombre, String descripcion, String caracteristicas, String precio, String categoria, String imagen, float cantidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.caracteristicas = caracteristicas;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.imagen = imagen;
+        this.cantidad = cantidad;
+    }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public String getCaracteristicas() {
+        return caracteristicas;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
 
-	public String getCaracteristicas() {
-		return caracteristicas;
-	}
+    public String getPrecio() {
+        return precio;
+    }
 
-	public void setCaracteristicas(String caracteristicas) {
-		this.caracteristicas = caracteristicas;
-	}
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
 
-	public String getPrecio() {
-		return precio;
-	}
+    public String getCategoria() {
+        return categoria;
+    }
 
-	public void setPrecio(String precio) {
-		this.precio = precio;
-	}
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
-	public String getCategoria() {
-		return categoria;
-	}
+    public String getImagen() {
+        return imagen;
+    }
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
-	public String getImagen() {
-		return imagen;
-	}
+    public float getCantidad() {
+        return cantidad;
+    }
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
+    public void setCantidad(float cantidad) {
+        this.cantidad = cantidad;
+    }
 
-	public int getCantidad() {
-		return cantidad;
-	}
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", caracteristicas='" + caracteristicas + '\'' +
+                ", precio='" + precio + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", imagen='" + imagen + '\'' +
+                ", cantidad=" + cantidad +
+                '}';
+    }
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-	@Override
-	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", caracteristicas="
-				+ caracteristicas + ", precio=" + precio + ", categoria=" + categoria + ", imagen=" + imagen
-				+ ", cantidad=" + cantidad + "]";
-	}
-    
-    
+        Producto producto = (Producto) o;
+
+        if (Float.compare(producto.cantidad, cantidad) != 0) return false;
+        if (!id.equals(producto.id)) return false;
+        if (!nombre.equals(producto.nombre)) return false;
+        if (!descripcion.equals(producto.descripcion)) return false;
+        if (!caracteristicas.equals(producto.caracteristicas)) return false;
+        if (!precio.equals(producto.precio)) return false;
+        if (!categoria.equals(producto.categoria)) return false;
+        return imagen.equals(producto.imagen);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + nombre.hashCode();
+        result = 31 * result + descripcion.hashCode();
+        result = 31 * result + caracteristicas.hashCode();
+        result = 31 * result + precio.hashCode();
+        result = 31 * result + categoria.hashCode();
+        result = 31 * result + imagen.hashCode();
+        result = 31 * result + (cantidad != +0.0f ? Float.floatToIntBits(cantidad) : 0);
+        return result;
+    }
 }

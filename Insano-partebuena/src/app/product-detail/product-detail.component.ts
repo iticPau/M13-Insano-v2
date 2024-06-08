@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from '../model/Product.model';
 import { InsanoService } from '../service/insano.service';
 
@@ -14,7 +14,7 @@ export class ProductDetailComponent {
   product: Producto | undefined;
 
   constructor(private route: ActivatedRoute,
-    private insanoService: InsanoService) { }
+    private insanoService: InsanoService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -39,7 +39,9 @@ export class ProductDetailComponent {
   anadirAlCarrito() {
     if (this.product && this.count > 0) {
       this.insanoService.añadirAlCarrito(this.product, this.count);
+      alert('Se han añadido ' + this.count + ' ' + this.product.nombre + '/es al carrito');
       this.count = 0; 
+      this.router.navigate(['/carrito']);
     }
 
     console.log('Carrito:', this.insanoService.obtenerCarrito());

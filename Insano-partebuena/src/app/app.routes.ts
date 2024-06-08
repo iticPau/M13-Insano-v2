@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Importa el componente del registro aquí
+//Importamos los componentes
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component'; 
 import { InicioComponent } from './inicio/inicio.component';
@@ -9,9 +9,10 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { BuscadorComponent } from './buscador/buscador.component';
 
 
-// Define las rutas de la app
+//Definimos las rutas
 export const routes: Routes = [
   { path: '', component: InicioComponent },
   { path: 'register', component: RegisterComponent },
@@ -19,7 +20,8 @@ export const routes: Routes = [
   { path: 'product-detail', component: ProductDetailComponent },
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: 'carrito', component: CarritoComponent }
+  { path: 'carrito', component: CarritoComponent },
+  { path: 'buscador', component: BuscadorComponent}
 ];
 
 @NgModule({

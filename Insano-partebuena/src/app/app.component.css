@@ -5,7 +5,7 @@
 }
 
 .imagen-empleado {
-    width: 100px; 
+    width: 100px;
     height: 100px;
     margin-right: 5px;
 }
@@ -33,6 +33,11 @@ img {
     width: 10%;
 }
 
+a img {
+    width: 50px;
+    border-radius: 50%;
+}
+
 .todoheader {
     width: 90%;
     display: flex;
@@ -41,7 +46,7 @@ img {
 }
 
 .botonesnavegacion {
-    width: 50%;
+    width: 65%;
 }
 
 button.botonav {
@@ -132,8 +137,7 @@ body {
 }
 
 button {
-    background-color: #769DFF;
-    color: white;
+    background-color: #e9e9e9;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -154,7 +158,6 @@ button:hover {
 .section-derecha {
     flex: 1;
     color: white;
-    /* Color de letra blanco */
     background-color: black;
 }
 
@@ -197,4 +200,24 @@ button:hover {
 
 .section-derecha .social-icons a {
     margin-right: 10px;
+}
+
+.boton-buscar {
+    background-color: white;
+    color: black;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-weight: bold;
+}
+
+.carrito {
+    width: 50px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.carrito > img {
+    width: 100%;
 }

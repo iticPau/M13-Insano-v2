@@ -69,9 +69,17 @@ main {
 }
 
 .mitadfondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1;
     background-size: 700px 800px;
     background-position: center;
+}
+
+.mitadfondo img {
+    width: 500px;
+    height: 500px;
 }
 body{
     margin: 0;
@@ -85,6 +93,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 5%;
 }
 
 .logo {
@@ -93,11 +102,12 @@ body{
 }
 
 .logo img {
-    width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+    width: 100px; 
 }
 
 .login-section {
     text-align: center;
+    width: 50%;
 }
 
 .login-section h2 {
@@ -110,6 +120,7 @@ body{
 
 .login-section form div {
     display: flex;
+    margin-bottom: 5%;
 }
 
 .tituloregister{
@@ -119,6 +130,7 @@ body{
 .login-section label {
     display: block;
     margin-bottom: 5px;
+    margin-right: 5%;
 }
 
 .login-section input {
@@ -160,12 +172,12 @@ button:hover {
 .section-izquierda,
 .section-derecha {
     flex: 1;
-    color: white; /* Color de letra blanco */
+    color: white;
     background-color: black;
 }
 
 .footer {
-    background-color: black; /* Fondo negro */
+    background-color: black;
 }
 .enlaces{
     margin-left: 20px;

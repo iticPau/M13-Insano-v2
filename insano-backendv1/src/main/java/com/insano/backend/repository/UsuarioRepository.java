@@ -9,5 +9,5 @@ import com.insano.backend.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	Optional<Usuario> findByUsuarioAndPassword(String usuario, String password);
-
+	Optional<Usuario> findByUsuario(String usuario);
 }

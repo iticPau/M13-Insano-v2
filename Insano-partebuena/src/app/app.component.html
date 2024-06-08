@@ -3,24 +3,23 @@
 
     <div class="todoheader">
         <div class="buscador">
-            <button type="submit">Buscar</button>
+            <button class="boton-buscar" type="submit" routerLink="buscador">Buscar</button>
         </div>
         <div class="botonesnavegacion">
             <button class="botonav" routerLink="">Inicio</button>
-            <button class="botonav" routerLink="register">Registro</button>
-            
             @if(this.authService.loggedInUser == null){
-                <button class="botonav" routerLink="login">Login</button>
+            <button class="botonav" routerLink="register">Registro</button>
+            <button class="botonav" routerLink="login">Login</button>
             }
             @if(this.authService.loggedInUser != null) {
-                <button (click)="logout()">Logout</button>
+            <button class="botonav" (click)="logout()">Logout</button>
             }
 
             <button class="botonav" routerLink="nosotros">Sobre Nosotros</button>
             <button class="botonav" routerLink="contacto">Contactanos</button>
         </div>
-        <div class="carrito">
-            <button routerLink="carrito">Carrito</button>
+        <div class="carrito" routerLink="carrito">
+            <img src="../assets/Carrito.png">
         </div>
     </div>
 </header>
@@ -32,24 +31,22 @@
         <div class="section-izquierda">
             <h2 class="enlaces">Enlaces de interés</h2>
             <ul class="enlaces">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="#">Contáctanos</a></li>
-                <li>[<a href="#">Política de privacidad</a>]</li>
+                <li><a routerLink="">Inicio</a></li>
+                <li><a routerLink="nosotros">Sobre Nosotros</a></li>
+                <li><a routerLink="contacto">Contáctanos</a></li>
             </ul>
             <h3 class="enlaces">Contactanos</h3>
             <ul class="enlaces">
                 <li>insanocomputerinsano.com</li>
                 <li>+34 689 921 512</li>
-                <a routerLink="register">Registro</a>
             </ul>
         </div>
         <div class="section-derecha">
             <h2>Visita nuestras redes sociales</h2>
             <div class="social-icons">
-                <a href="#"><img src="facebook-icon.png"></a>
-                <a href="#"><img src="instagram-icon.png"></a>
-                <a href="#"><img src="twitter-icon.png"></a>
+                <a href="#"><img src="../assets/logo_twitter.jpeg"></a>
+                <a href="#"><img src="../assets/logo_instagram.jpg"></a>
+                <a href="#"><img src="../assets/logo_facebook.png"></a>
             </div>
         </div>
     </div>

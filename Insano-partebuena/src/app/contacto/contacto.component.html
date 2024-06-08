@@ -1,41 +1,36 @@
 <section>
-    <form class="form">
+    <form class="form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
         <h2 class="title">Contáctenos</h2>
-        <label for="">
+        <label>
             <p>Nombre</p>
-            <input type="text" placeholder="Nombre">
+            <input type="text" [(ngModel)]="contactData.nombre" name="nombre" placeholder="Nombre" required>
         </label>
-
-        <label for="">
+        <label>
             <p>Teléfono</p>
-            <input type="text" placeholder="Teléfono">
+            <input type="text" [(ngModel)]="contactData.telefono" name="telefono" placeholder="Teléfono" required>
         </label>
-
-        <label for="">
+        <label>
             <p>Email</p>
-            <input type="email" placeholder="Email">
+            <input type="email" [(ngModel)]="contactData.email" name="email" placeholder="Email" required>
         </label>
-
-        <label for="">
+        <label>
             <p>Asunto</p>
-            <input type="text" placeholder="Asunto">
+            <input type="text" [(ngModel)]="contactData.asunto" name="asunto" placeholder="Asunto" required>
         </label>
-
-        <label for="">
+        <label>
             <p>Fecha</p>
-            <input type="date" placeholder="Fecha">
+            <input type="date" [(ngModel)]="contactData.fecha" name="fecha" placeholder="Fecha" required>
         </label>
-
-        <label for="">
+        <label>
             <p>Observación</p>
-            <textarea name="Observación" id="" cols="30" rows="10"></textarea>
+            <textarea name="observacion" [(ngModel)]="contactData.observacion" cols="30" rows="10" required></textarea>
         </label>
-
-        <button type="submit">Enviar</button>
+        <button type="submit" [disabled]="!contactForm.form.valid">Enviar</button>
     </form>
+
     <article class="info">
         <h2>Contactes</h2>
         <p>insanocomputer&#64;gmail.com</p>
-        <p>+34 584-241-429</p>
+        <p>{{telefono}}</p>
     </article>
 </section>
